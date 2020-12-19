@@ -298,102 +298,102 @@
             }
           }
         }
-      },
-      "createCartResponse": {
-        "required": ["category"],
-        "properties": {
-          "category": {
-            "type": "object",
-            "required": [
-              "_id",
-              "user",
-              "cartItems",
-              "createdAt",
-              "updatedAt",
-              "__v"
-            ],
-            "properties": {
-              "_id": {
-                "type": "string"
-              },
-              "user": { "type": "string" },
-              "cartItems": {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "required": ["_id", "quantity", "product", "price"],
-                  "properties": {
-                    "_id": {
-                      "type": "string"
-                    },
-                    "quantity": {
-                      "type": "number"
-                    },
-                    "product": {
-                      "type": "number"
-                    },
-                    "price": {
-                      "type": "number"
-                    }
+      }
+    },
+    "createCartResponse": {
+      "required": ["category"],
+      "properties": {
+        "category": {
+          "type": "object",
+          "required": [
+            "_id",
+            "user",
+            "cartItems",
+            "createdAt",
+            "updatedAt",
+            "__v"
+          ],
+          "properties": {
+            "_id": {
+              "type": "string"
+            },
+            "user": { "type": "string" },
+            "cartItems": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["_id", "quantity", "product", "price"],
+                "properties": {
+                  "_id": {
+                    "type": "string"
+                  },
+                  "quantity": {
+                    "type": "number"
+                  },
+                  "product": {
+                    "type": "number"
+                  },
+                  "price": {
+                    "type": "number"
                   }
                 }
-              },
-              "createdAt": { "type": "string" },
-              "updatedAt": { "type": "string" }
-            }
+              }
+            },
+            "createdAt": { "type": "string" },
+            "updatedAt": { "type": "string" }
           }
         }
-      },
-      "signup": {
-        "required": ["firstName", "lastName", "email", "password"],
-        "properties": {
-          "firstName": {
-            "type": "string"
-          },
-          "lastName": {
-            "type": "string"
-          },
-          "email": {
-            "type": "string"
-          },
-          "password": {
-            "type": "string"
-          }
+      }
+    },
+    "signup": {
+      "required": ["firstName", "lastName", "email", "password"],
+      "properties": {
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
         }
-      },
-      "signin": {
-        "required": ["email", "password"],
-        "properties": {
-          "email": {
-            "type": "string"
-          },
-          "password": {
-            "type": "string"
-          }
+      }
+    },
+    "signin": {
+      "required": ["email", "password"],
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
         }
-      },
-      "createCategory": {
-        "required": ["name", "parentId"],
-        "properties": {
-          "email": {
-            "type": "string"
-          },
-          "password": {
-            "type": "string"
-          }
+      }
+    },
+    "createCategory": {
+      "required": ["name", "parentId"],
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
         }
-      },
-      "createCart": {
-        "required": ["cartItems"],
-        "properties": {
-          "cartItems": {
-            "type": "object",
-            "required": ["product", "price", "quantity"],
-            "properties": {
-              "product": { "type": "string" },
-              "price": { "type": "number" },
-              "quantity": { "type": "number" }
-            }
+      }
+    },
+    "createCart": {
+      "required": ["cartItems"],
+      "properties": {
+        "cartItems": {
+          "type": "object",
+          "required": ["product", "price", "quantity"],
+          "properties": {
+            "product": { "type": "string" },
+            "price": { "type": "number" },
+            "quantity": { "type": "number" }
           }
         }
       }
