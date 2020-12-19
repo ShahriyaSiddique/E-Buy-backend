@@ -1,0 +1,402 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "E-Buy",
+    "description": "An e-commerce web-app built with MERN stack",
+    "license": {
+      "name": "MIT"
+    }
+  },
+  "host": "https://e-buy-mern.herokuapp.com/api",
+  "basePath": "/",
+  "schemes": ["https"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "securityDefinitions": {
+    "jwt": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "Authorization"
+    }
+  },
+  "security": [
+    {
+      "jwt": []
+    }
+  ],
+  "paths": {
+    "/category/getcategories": {
+      "get": {
+        "tags": ["Category"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/getCategoryResponse"
+            }
+          }
+        }
+      }
+    },
+    "/admin/signin": {
+      "post": {
+        "tags": ["Users"],
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "This api for user signin",
+            "schema": {
+              "$ref": "#/definitions/signin"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/SigninResponse"
+            }
+          }
+        }
+      }
+    },
+    "/signin": {
+      "post": {
+        "tags": ["Users"],
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "This api for user signin",
+            "schema": {
+              "$ref": "#/definitions/signin"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/SigninResponse"
+            }
+          }
+        }
+      }
+    },
+    "/admin/signup": {
+      "post": {
+        "tags": ["Users"],
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "User that we want to create",
+            "schema": {
+              "$ref": "#/definitions/signup"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/SignupResponse"
+            }
+          }
+        }
+      }
+    },
+    "/signup": {
+      "post": {
+        "tags": ["Users"],
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "User that we want to create",
+            "schema": {
+              "$ref": "#/definitions/signup"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/SignupResponse"
+            }
+          }
+        }
+      }
+    },
+    "/category/create": {
+      "post": {
+        "tags": ["Category"],
+        "parameters": [
+          {
+            "name": "categoryImage",
+            "in": "formData",
+            "type": "file",
+            "required": "true",
+            "description": "User that we want to create"
+          },
+          {
+            "name": "name",
+            "in": "formData",
+            "type": "string",
+            "required": "true"
+          },
+          {
+            "name": "parentId",
+            "in": "formData",
+            "type": "string",
+            "required": "true"
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/createCategoryResponse"
+            }
+          }
+        }
+      }
+    },
+    "/user/cart/addtocart": {
+      "post": {
+        "tags": ["Cart"],
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "User that we want to create",
+            "schema": {
+              "$ref": "#/definitions/createCart"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/createCartResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "SignupResponse": {
+      "required": ["message"],
+      "properties": {
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "SigninResponse": {
+      "required": ["token", "user"],
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "user": {
+          "type": "object",
+          "required": [
+            "_id",
+            "firstName",
+            "lastName",
+            "email",
+            "role",
+            "fullname"
+          ],
+          "properties": {
+            "_id": {
+              "type": "string"
+            },
+            "firstName": { "type": "string" },
+            "lastName": { "type": "string" },
+            "email": { "type": "string" },
+            "role": { "type": "string" },
+            "fullname": { "type": "string" }
+          }
+        }
+      }
+    },
+    "createCategoryResponse": {
+      "required": ["category"],
+      "properties": {
+        "category": {
+          "type": "object",
+          "required": [
+            "_id",
+            "name",
+            "slug",
+            "parentId",
+            "createdAt",
+            "updatedAt"
+          ],
+          "properties": {
+            "_id": {
+              "type": "string"
+            },
+            "firstName": { "type": "string" },
+            "lastName": { "type": "string" },
+            "email": { "type": "string" },
+            "role": { "type": "string" },
+            "fullname": { "type": "string" }
+          }
+        }
+      }
+    },
+    "getCategoryResponse": {
+      "required": ["category"],
+      "properties": {
+        "category": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["_id", "name", "slug", "children"],
+            "properties": {
+              "_id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "slug": {
+                "type": "string"
+              },
+              "children": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": ["_id", "name", "slug", "children"],
+                  "properties": {
+                    "_id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "slug": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "createCartResponse": {
+        "required": ["category"],
+        "properties": {
+          "category": {
+            "type": "object",
+            "required": [
+              "_id",
+              "user",
+              "cartItems",
+              "createdAt",
+              "updatedAt",
+              "__v"
+            ],
+            "properties": {
+              "_id": {
+                "type": "string"
+              },
+              "user": { "type": "string" },
+              "cartItems": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": ["_id", "quantity", "product", "price"],
+                  "properties": {
+                    "_id": {
+                      "type": "string"
+                    },
+                    "quantity": {
+                      "type": "number"
+                    },
+                    "product": {
+                      "type": "number"
+                    },
+                    "price": {
+                      "type": "number"
+                    }
+                  }
+                }
+              },
+              "createdAt": { "type": "string" },
+              "updatedAt": { "type": "string" }
+            }
+          }
+        }
+      },
+      "signup": {
+        "required": ["firstName", "lastName", "email", "password"],
+        "properties": {
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        }
+      },
+      "signin": {
+        "required": ["email", "password"],
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        }
+      },
+      "createCategory": {
+        "required": ["name", "parentId"],
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        }
+      },
+      "createCart": {
+        "required": ["cartItems"],
+        "properties": {
+          "cartItems": {
+            "type": "object",
+            "required": ["product", "price", "quantity"],
+            "properties": {
+              "product": { "type": "string" },
+              "price": { "type": "number" },
+              "quantity": { "type": "number" }
+            }
+          }
+        }
+      }
+    }
+  }
+}
