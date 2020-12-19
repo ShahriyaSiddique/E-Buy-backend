@@ -18,7 +18,7 @@ const app = express();
 env.config();
 
 // initialize mongodb
-const mongodbString = `mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONOGODB_PASS}@nodetutorial.7rhjr.mongodb.net/${process.env.MONGODB_DATABASE}?retryWrites=true&w=majority`;
+const mongodbString = `mongodb+srv://onik:onik@nodetutorial.7rhjr.mongodb.net/mern-ecommerce?retryWrites=true&w=majority`;
 // const mongodbString = `mongodb://localhost:27017/${process.env.MONGODB_DATABASE}`;
 mongoose
   .connect(mongodbString, {
